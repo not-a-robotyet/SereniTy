@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Petition</title>
+    <link rel="stylesheet" href="startstyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Start Your Petition</h1>
+        </div>
+        
+        <form id="petitionForm">
+           
+            
+            <div class="form-page" id="page1">
+                <h2>Let's take your first step towards change.</h2>
+                <p>Select the scope of your petition:</p>
+                
+                <div class="button-group">
+                    <button type="button" class="option-button" onclick="selectScope('Local', this)">🏠 Local</button>
+                    <button type="button" class="option-button" onclick="selectScope('National', this)">🏛 National</button>
+                    <button type="button" class="option-button" onclick="selectScope('Global', this)">🌎 Global</button>
+                </div>
+                <input type="hidden" id="selectedScope" name="scope" required>
+
+                <div class="buttons">
+                    <button type="button" onclick="nextPage(1)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Specify Geographic Area -->
+            <div class="form-page" id="page2">
+                <h2>What geographic area is impacted?</h2>
+                <p>It will help more people find your petition.</p>
+                <input type="text" id="region" placeholder="Enter affected region" required>
+                <div class="buttons">
+                    <button type="button" onclick="prevPage(2)">Back</button>
+                    <button type="button" onclick="nextPage(2)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Write Petition Title -->
+            <div class="form-page" id="page3">
+                <h2>Write your petition title</h2>
+                <p>Tell people what you want to change.</p>
+                <input type="text" id="title" placeholder="Petition title" required>
+                <div class="buttons">
+                    <button type="button" onclick="prevPage(3)">Back</button>
+                    <button type="button" onclick="nextPage(3)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Tell Your Story -->
+            <div class="form-page" id="page4">
+                <h2>Tell your story</h2>
+                <p>Start from scratch or use our recommended structure.</p>
+                <textarea id="description" placeholder="Write your story here..." required></textarea>
+                <div class="buttons">
+                    <button type="button" onclick="prevPage(4)">Back</button>
+                    <button type="button" onclick="nextPage(4)">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Add an Image -->
+            <div class="form-page" id="page5">
+                <h2>Add an image (optional)</h2>
+                <p>Petitions with an image get more signatures.</p>
+                <input type="file" id="image" accept="image/*">
+                
+                <!-- Hidden Fields -->
+                <input type="hidden" id="author" value="Anonymous">
+                <input type="hidden" id="date">
+                
+                <div class="buttons">
+                    <button type="button" onclick="prevPage(5)">Back</button>
+                    <button type="submit">Submit Petition</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="info-overlay"></div>
+    <div class="info">
+        <p id="infoholder"></p>
+        <button type="submit" id="ok">okay!</button>
+    </div>
+
+    <!-- Include Firebase and JavaScript -->
+    <script src="firebaseConfig.js" type="module" defer></script>
+    <script src="start.js" type="module" defer></script>
+    <script src="auth.js" type="module" defer></script>
+    <script>
+        let currentPage = 1;
+        document.getElementById('page' + currentPage).style.display = 'block';
+        
+        function nextPage(page) {
+            document.getElementById('page' + page).style.display = 'none';
+            currentPage = page + 1;
+            document.getElementById('page' + currentPage).style.display = 'block';
+        }
+
+        function prevPage(page) {
+            document.getElementById('page' + page).style.display = 'none';
+            currentPage = page - 1;
+            document.getElementById('page' + currentPage).style.display = 'block';
+        }
+
+        function selectScope(scope, button) {
+            document.getElementById('selectedScope').value = scope;
+            document.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        }
+
+        // Set today's date in hidden input
+        document.getElementById("date").value = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>

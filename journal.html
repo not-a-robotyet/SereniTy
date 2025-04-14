@@ -1,0 +1,313 @@
+<html>
+    <head>
+        <title>My Journal</title>
+        <link rel="stylesheet" href="journal_temp_stylesheet.css">
+        <style>
+            footer {
+                background-color: #ca7171;
+                color: #fff;
+                padding: 20px 0;
+                text-align: center;
+              }
+             .container_footer {
+                display: block;
+             }
+             .social-link {
+                color: white;
+                text-decoration: none;
+                margin: 10px;
+             }
+             header#journal_top {
+                padding: 20px;
+                color: white;
+                text-align: center;
+                font-size: 36px;
+                font-weight: bold;
+                background: linear-gradient(135deg, #f39da4, #aa3e47);
+                border-bottom: 2px solid #e46c76;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            </style>
+    </head>
+    <body>
+        
+        <div id="user-info">
+            <div id="user-details">
+                <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" alt="User Icon">
+                <span id="user-email">Loading...</span>
+            </div>
+            <button onclick="logout()" id="logout-btn">Logout</button>
+        </div>
+        <header id="journal_top">
+            <p>My Journal</p>
+        </header>
+    
+        <div id="writing_1">
+            <form>
+            <div id="writing_2">
+                <div id="titleareajournal">
+                    <input type="text" name="journaltitle" placeholder="Enter your journal title" id="journaltitle">
+                    <p id="selected_date"></p>
+                    </div>
+                <div id="textareajournal">
+                    <textarea id="journalpage" name="journal_page" rows="36" cols="52"></textarea>
+                </div>
+                <input type="submit" name="Submit" value="Save" id="journalsave">
+            </div>
+            </form>
+            <div id="colorchoice">
+                <p id="date_message">Pick a journal date to write/read</p>
+                <input type="date" name="journaldate" id="datepicker" onchange="displaydate()">
+                <input type="button" name="cornsilkpage"  id="cornsilk_1" onclick="changepagecolor('cornsilk')">
+                <input type="button" name="lightcyanpage"  id="lightcyan_2" onclick="changepagecolor('lightcyan')">
+                <input type="button" name="nyanzapage"  id="nyanza_3" onclick="changepagecolor('nyanza')">
+                <input type="button" name="lavenderpage"  id="lavender_4" onclick="changepagecolor('lavender')">
+                <input type="button" name="mistyrosepage"  id="mistyrose_5" onclick="changepagecolor('mistyrose')">
+                <input type="button" name="unbleachedsilkpage"  id="unbleachedsilk_6" onclick="changepagecolor('unbleachedsilk')">
+            </div>
+        </div>
+        <footer class="footer bg-dark text-light py-4 text-center">
+            <div class="container_footer">
+              <div class="copyright">
+                <p>&copy; 2025 SereiniTy. All rights reserved.</p>
+              </div>
+              
+              <div class="social-icons my-4">
+                <p>Follow us on:</p>
+                <a href="https://instagram.com" target="_blank" class="social-link d-block my-2">
+                  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png" alt="Instagram" class="social-icon"> Instagram
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-link d-block my-2">
+                  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter--v1.png" alt="Twitter" class="social-icon"> Twitter
+                </a>
+              </div>
+              
+            </div>
+          </footer>
+          
+        <script>
+
+            let focusBorderColor,focusBoxShadow,focusTitleBorderColor,focusTitleBoxShadow,buttonColorHoverEffect,buttonColorBackgroundEffect;
+            function changepagecolor(color)
+            {
+                if(color=='cornsilk'){
+                    document.getElementById("journaltitle").style.backgroundColor = "#fff8dc";
+                    document.getElementById("selected_date").style.backgroundColor = "#fff8dc";
+                    document.getElementById("journaltitle").style.border="2px solid #987654";
+                    document.getElementById("selected_date").style.border="2px solid #987654";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient(#fff8dc 0px, #fff8dc 28px, #987654 29px, #fff8dc 30px)" ;
+                    document.getElementById("journalpage").style.border="2px solid #987654" ;
+                    applyfocusEffect("#987654","rgba(152, 118, 84, 0.5)");
+                    applyfocusTitleEffect("#987654","rgba(152, 118, 84, 0.5)");
+                    //changeimagecolor("#fff8dc","#987654");
+                    buttonColorHoverEffect="#987654";
+                    buttonColorBackgroundEffect="#fff8dc";
+                }
+                else if(color=='lightcyan'){
+                    document.getElementById("journaltitle").style.backgroundColor = "#e0ffff";
+                    document.getElementById("selected_date").style.backgroundColor = "#e0ffff";
+                    document.getElementById("journaltitle").style.border="2px solid #87ceeb";
+                    document.getElementById("selected_date").style.border="2px solid #87ceeb";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient(#e0ffff  0px, #e0ffff  28px, #87ceeb 29px, #e0ffff 30px)";
+                    document.getElementById("journalpage").style.border="2px solid #87ceeb";
+                    applyfocusEffect("#87ceeb","rgba(115, 169, 194, 0.5)");
+                    applyfocusTitleEffect("#87ceeb","rgba(115, 169, 194, 0.5)");
+                    //changeimagecolor("#e0ffff","#87ceeb");
+                    buttonColorHoverEffect="#87ceeb";
+                    buttonColorBackgroundEffect="#e0ffff";
+                }
+                else if(color=='nyanza'){
+                    document.getElementById("journaltitle").style.backgroundColor= "#e9ffdb";
+                    document.getElementById("selected_date").style.backgroundColor= "#e9ffdb";
+                    document.getElementById("journaltitle").style.border="2px solid #addfad";
+                    document.getElementById("selected_date").style.border="2px solid #addfad";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient(#e9ffdb 0px, #e9ffdb 28px, #addfad 29px, #e9ffdb 30px)";
+                    document.getElementById("journalpage").style.border="2px solid #addfad";
+                    applyfocusEffect("#addfad","rgba(216, 228, 188, 0.5)");
+                    applyfocusTitleEffect("#addfad","rgba(216, 228, 188, 0.5)");
+                    //changeimagecolor("#e9ffdb","#addfad");
+                    buttonColorHoverEffect="#addfad";
+                    buttonColorBackgroundEffect="#e9ffdb";
+                }
+                else if(color=='lavender'){
+                    document.getElementById("journaltitle").style.backgroundColor = "#e6e6fa";
+                    document.getElementById("selected_date").style.backgroundColor = "#e6e6fa";
+                    document.getElementById("journaltitle").style.border="2px solid #966fd6";
+                    document.getElementById("selected_date").style.border="2px solid #966fd6";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient(#e6e6fa 0px, #e6e6fa 28px, #966fd6 29px, #e6e6fa 30px)" ;
+                    document.getElementById("journalpage").style.border="2px solid #966fd6" ;
+                    applyfocusEffect("#966fd6","rgba(150, 123, 182, 0.5)");
+                    applyfocusTitleEffect("#966fd6","rgba(150, 123, 182, 0.5)");
+                    //changeimagecolor("#e6e6fa","#966fd6");
+                    buttonColorHoverEffect="#966fd6";
+                    buttonColorBackgroundEffect="#e6e6fa";
+                }
+                else if(color=='mistyrose'){
+                    document.getElementById("journaltitle").style.backgroundColor = "#ffe4e1";
+                    document.getElementById("selected_date").style.backgroundColor = "#ffe4e1";
+                    document.getElementById("journaltitle").style.border="2px solid #f7bfbe";
+                    document.getElementById("selected_date").style.border="2px solid #f7bfbe";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient( #ffe4e1 0px,  #ffe4e1 28px,#f7bfbe 29px, #ffe4e1 30px)" ;
+                    document.getElementById("journalpage").style.border="2px solid #f7bfbe" ;
+                    applyfocusEffect("#f7bfbe","rgba(230, 143, 172, 0.5)");
+                    applyfocusTitleEffect("#f7bfbe","rgba(230, 143, 172, 0.5)");
+                    //changeimagecolor("#ffe4e1","#f7bfbe");
+                    buttonColorHoverEffect="#f7bfbe";
+                    buttonColorBackgroundEffect="#ffe4e1";
+                }
+                else if(color=='unbleachedsilk'){
+                    document.getElementById("journaltitle").style.backgroundColor = "#ffddca";
+                    document.getElementById("selected_date").style.backgroundColor = "#ffddca";
+                    document.getElementById("journaltitle").style.border="2px solid #ff8c69";
+                    document.getElementById("selected_date").style.border="2px solid #ff8c69";
+                    document.getElementById("journaltitle").style.borderBottom="none";
+                    document.getElementById("selected_date").style.borderBottom= "none";
+                    document.getElementById("selected_date").style.borderLeft="none";
+                    document.getElementById("journalpage").style.backgroundImage = "repeating-linear-gradient( #ffddca 0px,  #ffddca 28px, #ff8c69 29px,  #ffddca 30px)" ;
+                    document.getElementById("journalpage").style.border="2px solid #ff8c69" ;
+                    applyfocusEffect("#ff8c69","rgba(255, 117, 24, 0.5)");
+                    applyfocusTitleEffect("#ff8c69","rgba(255, 117, 24, 0.5)");
+                    //changeimagecolor("#ffddca","#ff8c69");
+                    buttonColorHoverEffect="#ff8c69";
+                    buttonColorBackgroundEffect="#ffddca";
+                }
+                document.getElementById("journalpage").removeEventListener("focus",focusEffect);
+                document.getElementById("journalpage").addEventListener("focus",focusEffect);
+                document.getElementById("journalpage").removeEventListener("blur",removefocusEffect);
+                document.getElementById("journalpage").addEventListener("blur",removefocusEffect);
+
+                document.getElementById("journaltitle").removeEventListener("focus",focusTopEffect);
+                document.getElementById("journaltitle").addEventListener("focus",focusTopEffect);
+                document.getElementById("journaltitle").removeEventListener("blur",removefocusTopEffect);
+                document.getElementById("journaltitle").addEventListener("blur",removefocusTopEffect);
+
+                document.getElementById("upload-btn").removeEventListener("mouseover",applyhoverEffect);
+                document.getElementById("upload-btn").removeEventListener("mouseout",removehoverEffect)
+                document.getElementById("upload-btn").addEventListener("mouseover",(event) =>applyhoverEffect(event,buttonColorHoverEffect));
+                document.getElementById("upload-btn").addEventListener("mouseout",(event) =>removehoverEffect(event,buttonColorBackgroundEffect));
+            }
+/*
+            function changeimagecolor(buttonBackground,borderImageColor)
+            {
+                document.getElementById("image-container").style.border="2px solid "+borderImageColor;
+                document.getElementById("upload-btn").style.background=buttonBackground;
+                document.getElementById("upload-btn").style.border="2px solid "+borderImageColor;
+
+            }
+*/           
+            function focusEffect()
+            {
+                console.log("Focus effect triggered!");
+                this.style.outline="none";
+                this.style.border=`2px solid ${focusBorderColor}`;
+                this.style.boxShadow=`0 0 5px ${focusBoxShadow}`;
+            }
+
+            function focusTopEffect()
+            {
+                console.log("Focus top effect triggered!");
+                this.style.outline="none";
+                this.style.border=`2px solid ${focusTitleBorderColor}`;
+                this.style.boxShadow=`0 0 5px ${focusTitleBoxShadow}`;
+            }
+
+            function removefocusEffect()
+            {
+                console.log("Blur Enabled!");
+                this.style.boxShadow="none";
+                this.style.borderColor="2px solid "+focusBorderColor;
+            }
+
+            function removefocusTopEffect()
+            {
+                console.log("Blur for Top Enabled!");
+                this.style.boxShadow="none";
+                this.style.borderColor="2px solid "+focusTitleBorderColor;
+                this.style.borderBottom="none";
+            }
+
+            function applyhoverEffect(event,buttonColorhover)
+            {
+
+                event.target.style.background=buttonColorhover;
+            }
+
+            function removehoverEffect(event,buttonColorbackground)
+            {
+                event.target.style.background=buttonColorbackground;
+            }
+
+            function applyfocusEffect(borderColor,boxShadow)
+            {
+                focusBorderColor=borderColor;
+                focusBoxShadow=boxShadow;
+            }
+
+            function applyfocusTitleEffect(titleborderColor,titleboxShadow)
+            {
+                focusTitleBorderColor=titleborderColor;
+                focusTitleBoxShadow=titleboxShadow;
+            }
+
+            function displaydate()
+            {
+                let date=document.getElementById("datepicker").value;
+                document.getElementById("selected_date").innerText=date;
+            }
+
+            let imageContainer = document.getElementById("image-container");
+        let fileInput = document.getElementById("file-input");
+
+        /*fileInput.addEventListener("change", function(event) {
+            let files = event.target.files;
+            
+            // Prevent upload if more than 10 images are selected
+            if (imageContainer.children.length + files.length > 10) {
+                alert("You can only upload up to 10 images.");
+                return;
+            }
+
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+
+                if (!file.type.startsWith("image/")) continue; // Skip non-image files
+                
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.classList.add("image-preview");
+
+                    // Remove image on click
+                    img.addEventListener("click", function() {
+                        imageContainer.removeChild(img);
+                    });
+
+                    imageContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });*/
+            
+        </script>
+        <script type="module" src="firebaseConfig.js" defer></script>
+        <script type="module" src="auth.js" defer></script>
+        <script type="module" src="journal.js" defer></script>
+        
+    </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Sharing Wall</title>
+  <script type="module" src="firebaseConfig.js"></script>
+  <script type="module" src="auth.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: url('wall6.jpg') no-repeat center center;
+      background-attachment: fixed;
+    }
+
+    .heading-container {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 90, 145, 0.945), rgba(182, 107, 57, 0.8));
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.heading-container h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  animation: fadeIn 2s ease-in-out;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.heading-container::before,
+.heading-container::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s infinite;
+}
+
+.heading-container::before {
+  top: -50px;
+  left: -50px;
+}
+
+.heading-container::after {
+  bottom: -50px;
+  right: -50px;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+}
+
+    .submit-story-btn {
+      background: linear-gradient(135deg, #d8386d, #a13d5e);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .submit-story-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .wall-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 90%;
+  min-height: 220px; 
+  overflow: auto;
+  background-size: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+    .note-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+    .sticky-note {
+      width: 220px;
+      height: 220px;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    .sticky-note:hover {
+      transform: scale(1.1);
+      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .sticky-note.expanded {
+    animation: none; /* Stop animation when expanded */
+  }
+
+    .note-content {
+      font-size: 16px;
+      color: #333;
+      height: 100%;
+      overflow: hidden;
+      word-break: break-word;
+      padding-right: 5px;
+    }
+
+    .like-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .like-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #FF4081;
+      margin-right: 10px;
+    }
+
+    .like-button:hover {
+      color: #F50057;
+    }
+
+    .like-count {
+      font-size: 18px;
+      color: #080808;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    #storyText {
+        width: 90%; /* Slightly reduced width to fit inside the box */
+  height: 150px; /* Increased height */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px; /* Larger text for readability */
+  box-sizing: border-box; /* Prevents overflow */
+    }
+
+    #charCount {
+      font-size: 14px;
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    #submitStory {
+      background: #FF4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #submitStory:hover {
+      background: #F50057;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="heading-container">
+    <h1>Story Sharing Wall</h1>
+  </div>
+  <br>
+  <button class="submit-story-btn" id="submitStoryBtn">✨ Submit Your Story ✨</button>
+  <br>
+  <div class="wall-container" id="wall-container"></div>
+
+  <!-- Main story submission modal -->
+  <div class="modal" id="formModal">
+    <div class="form-container">
+      <button class="close-btn" id="closeModal">&times;</button>
+      <h2>Share Your Story</h2>
+      <textarea id="storyText" placeholder="Write your story here..." maxlength="680"></textarea>
+      <div id="charCount">0/680 characters</div>
+      <button id="submitStory">Submit Story</button>
+    </div>
+  </div>
+
+  <!-- Custom alert modal -->
+  <div class="modal" id="alertModal">
+    <div class="form-container">
+      <button class="close-btn" id="closeAlert">&times;</button> <!-- Top-right close button -->
+      <h2>Oops!</h2>
+      <p>Please write a story before submitting.</p>
+    </div>
+  </div>
+
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
+  <script type="module" src="story.js"></script>
+</body>
+</html>

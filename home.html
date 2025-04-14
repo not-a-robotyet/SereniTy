@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SereniTy</title>
+    <link rel="stylesheet" href="st.css">
+    <script type="module" src="firebaseConfig.js"></script>
+<script type="module" src="auth.js"></script>
+
+    <style>
+    footer {
+        background-color: #ca7171;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+     .container_footer {
+        display: block;
+     }
+     .social-link {
+        color: white;
+        text-decoration: none;
+        margin: 10px;
+     }
+
+
+     #user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    #user-info img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #user-email {
+        font-weight: bold;
+    }
+
+   
+      </style>
+</head>
+<body>
+
+
+<header>
+    <video autoplay muted loop id="background-video">
+        <source src="vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</header>
+
+
+<nav>
+
+    <a href="#story-wall">Story Wall</a>
+    <a href="#personal-journal">Personal Journal</a>
+    <a href="#petition-rising">Petition Rising</a>
+    <div id="user-info">
+        <div id="user-details">
+            <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png" alt="User Icon">
+            <span id="user-email">Loading...</span>
+        </div>
+        <button onclick="logout()" id="logout-btn">Logout</button>
+    </div>
+    
+    
+</nav>
+
+
+<div class="container">
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Our platform proudly aligns with the United Nations Sustainable Development Goals (SDGs), with a steadfast focus on Mental Health and Well-being (SDG 3) and Gender Equality (SDG 5). We are committed to creating a sanctuary where individuals can seek solace, support, and understanding in their mental health journey. Our mission transcends mere advocacy; we aim to dismantle systemic biases, foster an environment of inclusivity, and champion equitable access to mental health care for all. By amplifying voices and raising awareness, we aspire to break stigmas, empower communities, and illuminate the indispensable role of mental well-being in leading a balanced and fulfilling life.</p>
+        </section>
+        <section id="story-wall">
+            <h2>Story Wall</h2>
+            <p>Share your experiences and connect with others on the journey towards better mental health.</p>
+            <button onclick="window.location.href='storywall.html'">Visit Story Wall</button>
+        </section>
+
+
+        <section id="personal-journal">
+            <h2>Personal Journal</h2>
+            <p>Write your thoughts, track your progress, and reflect on your mental health journey in a private journal.</p>
+            <button onclick="window.location.href='journal.html'">Start Your Journal</button>
+        </section>
+
+
+        <section id="petition-rising">
+            <h2>Petition Rising</h2>
+            <p>Join efforts to create awareness, raise voices, and push for gender equality reforms and policies.</p>
+            <button onclick="window.location.href='index.html'">Sign the Petition</button>
+        </section>
+    </main>
+
+
+    <aside class="sidebar">
+        <h3>Latest News</h3>
+        <ul>
+      
+            <li><a href="https://en.wikipedia.org/wiki/Women%27s_empowerment">Breaking the Silence: Women's Empowerment</a></li>
+            <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work">Mental Health Awareness in the Workplace</a></li>
+            <li><a href="https://www.verywellhealth.com/what-is-self-care-5212781">The Power of Self-care</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Women%27s_empowerment">Mental Health Resources for Women</a></li>
+            <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work">Overcoming Stigma: Mental Health Conversations</a></li>
+            <li><a href="https://www.verywellhealth.com/what-is-self-care-5212781">Work-Life Balance for Mental Well-being</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Women%27s_empowerment">Mindfulness Practices for Stress Reduction</a></li>
+            <li><a href="https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work">Emotional Resilience and Growth</a></li>
+            <li><a href="https://www.verywellhealth.com/what-is-self-care-5212781">Support Systems: Finding Help When You Need It</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Women%27s_empowerment">Breaking Barriers: Access to Mental Health Services</a></li>
+
+
+        </ul>
+    </aside>
+
+
+    <aside class="mood-tracker">
+        <h3>Your Mood Tracker</h3>
+        <p>Let us know how you're feeling today:</p>
+        <div class="mood-buttons">
+            <button class="mood-btn" data-mood="happy">😊</button>
+            <button class="mood-btn" data-mood="sad">😔 </button>
+            <button class="mood-btn" data-mood="angry">😡 </button>
+            <button class="mood-btn" data-mood="neutral">😐</button>
+            <button class="mood-btn" data-mood="frustrated">😫</button>
+        </div>
+        <div id="mood-stats"></div>
+    </aside>
+</div>
+<footer class="footer bg-dark text-light py-4 text-center">
+    <div class="container_footer">
+      <div class="copyright">
+        <p>&copy; 2025 SereniTy. All rights reserved.</p>
+      </div>
+      
+      <div class="social-icons my-4">
+        <p>Follow us on:</p>
+        <a href="https://instagram.com" target="_blank" class="social-link d-block my-2">
+          <img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png" alt="Instagram" class="social-icon"> Instagram
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-link d-block my-2">
+          <img src="https://img.icons8.com/ios-glyphs/30/ffffff/twitter--v1.png" alt="Twitter" class="social-icon"> Twitter
+        </a>
+      </div>
+      
+    </div>
+  </footer>
+  
+  
+
+  
+
+
+<div id="popup-overlay" class="popup-overlay"></div>
+
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <p id="popup-message"></p>
+        <p id="popup-stats"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+
+
+
+<!---<script>
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
+// Initialize Firebase Auth
+const auth = getAuth();
+
+// Check if user is logged in
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // Show user email
+        document.getElementById("user-email").textContent = user.email;
+    } else {
+        // Redirect to login if no user is found
+        window.location.href = "login.html";
+    }
+});
+
+// Logout function
+document.getElementById("logout-btn").addEventListener("click", () => {
+    signOut(auth).then(() => {
+        alert("Logged out successfully!");
+        window.location.href = "login.html";
+    }).catch((error) => {
+        alert("Error logging out: " + error.message);
+    });
+});
+
+</script> -->
+<script type="module" src="moodTracker.js"></script>
+
+</body>
+</html>

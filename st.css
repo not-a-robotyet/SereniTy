@@ -1,0 +1,316 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;  /* White background */
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+ 
+/* Header styles */
+header {
+    height: 400px;  /* Adjust the height to fit your design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9f2e6; /* Fallback color */
+    background-size: cover;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* Ensures the whole video fits without cropping */
+}
+
+ 
+/* Navigation styles */
+nav {
+    background-color: #69121eb7;  /* Soft blue background for navigation */
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    animation: fadeIn 1s ease-in-out 0.5s;
+}
+ 
+nav a {
+    font-size: 1.1em;
+    color: #4A4A4A;
+    padding: 10px 20px;
+    background-color: #d4e2d4; /* Soft peach */
+    border-radius: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+ 
+nav a:hover {
+    background-color: #a8c6a8;  /* Coral on hover */
+    transform: scale(1.05);  /* Slight scaling effect */
+}
+ 
+/* Main container (flexbox for parallel layout) */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+ 
+/* Main content area */
+main {
+    width: 70%;  /* Main content takes up 70% of the page */
+    padding: 20px;
+}
+ 
+/* Sidebar styles */
+.sidebar {
+    position: relative;
+    top: 275px;  /* Keep space from the top */
+    width: 20%;  /* Sidebar width */
+    background-color:#f5e6da; /* Light gray for subtle sidebar */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    height: 750px;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 1s forwards; /* Sidebar sliding in from the right */
+}
+ 
+.sidebar h3 {
+    font-size: 1.3em;
+    color:  #a86c6c;  /* Soft coral for titles */
+    margin-bottom: 15px;
+    text-align: center;
+}
+ 
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+ 
+.sidebar li {
+    margin-bottom: 12px;
+}
+ 
+.sidebar li a {
+    text-decoration: none;
+    color: #4A4A4A;
+    font-size: 1.1em;
+    transition: color 0.2s ease, transform 0.3s ease;
+}
+ 
+.sidebar li a:hover {
+    color: #a86c6c; /* Coral on hover */
+    transform: translateX(5px); /* Subtle movement */
+}
+ 
+/* Section styles */
+section {
+    margin-bottom: 40px;
+    background: #fdf4d1; /* Slight transparency for section */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease-out forwards;
+    border: 4px solid #a86c6c;
+}
+ 
+section h2 {
+    color:#a86c6c;  /* Coral color for headings */
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+ 
+section p {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+ 
+button {
+    background-color: #a86c6c;  /* Light blue for buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+ 
+button:hover {
+    background-color:#8a5b5b; /* Coral on hover */
+    transform: scale(1.05);  /* Slight scaling effect */
+}
+ 
+/* Footer Styling */
+/* footer { 
+    background-color: #FF6F61; /* Soft coral footer */
+    /* color: white;
+    padding: 20px;
+    font-size: 1.1em;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out 1.5s;
+} */ 
+
+
+ 
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+ 
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+ 
+@keyframes slideInRight {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+ 
+/* Mood Tracker Sidebar */
+.mood-tracker {
+    position: absolute;
+    top: 500px;
+    right: 40px;
+    width: 250px;
+    background-color: #f5e6da;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    z-index: 10;
+}
+ 
+.mood-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+ 
+.mood-btn {
+    padding: 5px;
+    background-color:#a86c6c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+ 
+.mood-btn:hover {
+    transform: scale(1.2);
+}
+ 
+/* Popup styles */
+/* Background overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+/* Popup styling */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1000;
+    width: 350px; /* Ensure it is not too big */
+    max-width: 90%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content {
+    padding: 15px;
+}
+
+/* Close Button */
+.popup button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    background-color: #ca7171;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.popup button:hover {
+    background-color: #a85a5a;
+}
+
+/* Pop-up fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+#user-info {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fdf4d1;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#user-details {
+    display: flex;
+    align-items: center; /* Keep icon next to email */
+    gap: 10px; /* Space between icon and email */
+}
+
+#user-email {
+    font-weight: bold;
+    text-align: center;
+}
+
+#logout-btn {
+    background: #69121eb7; ;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+    text-align: center;
+    margin-top: 5px; /* Space between email and button */
+}
+
+#logout-btn:hover {
+    background: #af6c6c;
+}

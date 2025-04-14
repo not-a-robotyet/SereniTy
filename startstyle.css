@@ -1,0 +1,191 @@
+
+
+/* Global Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('startp4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container with Transparent Black Box */
+.container {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Header Styling */
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Form Pages - Initially Hidden */
+.form-page {
+    display: none;
+}
+
+/* Input Fields */
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Textarea */
+textarea {
+    height: 100px;
+}
+
+/* Radio Button Styling */
+label {
+    display: block;
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+/* Button Container */
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    background: linear-gradient(135deg, #dd617c, #bb528c); /* Orange gradient */
+    color: white;
+    border: 2px solid white;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    transition: 0.3s;
+    align-items: center;
+}
+
+button:hover {
+    background: #cf8289;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+
+/* Styled Option Buttons */
+.option-button {
+    background: linear-gradient(135deg, #ce516c,#97454a); /* Strong blue gradient */
+    color: white;
+    border: 2px solid white;
+    padding: 15px 40px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Hover Effect */
+.option-button:hover {
+    background: linear-gradient(135deg, #d88484, #ad5d5d); /* Stronger hover gradient */
+    transform: scale(1.05);
+}
+
+/* Highlight Selected Button */
+.option-button.selected {
+    background: linear-gradient(135deg, #f36666, #e63719); /* Green highlight */
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* 🔥 Back & Continue Buttons */
+.nav-button {
+    background: linear-gradient(135deg, #FF8C00, #FF4500); /* Orange gradient */
+    color: white;
+    border: 2px solid white;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎨 Hover Effect */
+.nav-button:hover {
+    background: linear-gradient(135deg, #e07b00, #e63c00); /* Darker orange */
+    transform: scale(1.05);
+}
+
+/* 👆 Active Click Effect */
+.nav-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+    display: none;
+    padding: 20px;
+    margin: 10px 0px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    z-index: 1000;
+    position: absolute;
+    top: 40px;
+}
+#info-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}

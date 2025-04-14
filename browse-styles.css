@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.hero {
+    position: relative;
+    background: url('browse_bg.webp') center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay {
+    background: rgba(74,74,74,0.9);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 80%;
+}
+
+.petitions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.petition {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.petition:hover {
+    transform: translateY(-5px);
+}
+
+.petition img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+h1, h2 {
+    margin: 0 0 10px;
+}
+
+p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Petition Info Section */
+.petition-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.petition-info span {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+#user-info {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgb(253, 233, 233);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+#user-details {
+    display: flex;
+    align-items: center; /* Keep icon next to email */
+    gap: 10px; /* Space between icon and email */
+}
+
+#user-email {
+    font-weight: bold;
+    text-align: center;
+}
+
+#logout-btn {
+    background: #69121eb7; ;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+    text-align: center;
+    margin-top: 5px; /* Space between email and button */
+}
+
+#logout-btn:hover {
+    background: #af6c6c;
+}
+
+#popup-image {
+    width: 70%; /* Adjust the image size */
+    max-width: 200px; /* Limit max size */
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto; /* Centering the image */
+    border-radius: 8px;
+}

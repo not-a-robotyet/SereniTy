@@ -1,0 +1,299 @@
+body
+{
+    border: 0%;
+    margin: 0%;
+    padding: 0%;
+}
+#writing_1{
+    display:inline-block;
+    position: relative;
+    left: 300px;
+    top: 40px;
+    margin: 40px;
+}
+
+
+#writing_2{
+    display: inline-block;
+    
+}
+
+#titleareajournal{
+    display:flex;
+    margin:0px;
+}
+
+
+
+#selected_date{
+    background-color: #fff8dc;
+    border: 2px solid #987654;
+    border-radius: 6px;
+    border-left:none;
+    border-bottom:none;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-top-left-radius: 0%;
+    display: inline-block;
+    width: 123px;
+    height: 38px;
+    margin: 0px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#datepicker{
+    display: inline-block;
+    margin-left: 20px;
+}
+#textareajournal{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+}
+
+#journaltitle{
+    background-color:  #fff8dc;
+    border:2px solid #987654;
+    border-radius:6px;
+    border-bottom: none;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
+    display: inline-block;
+    font-family: serif;
+    font-size: 16px;
+    width: 375px;
+    height: 40px;
+    margin:0px;
+    vertical-align:middle;
+}
+
+#journalpage {
+    background-image: repeating-linear-gradient(
+  #fff8dc 0px, 
+  #fff8dc 28px, 
+  #987654 29px, 
+  #fff8dc 30px
+);
+    font-family: serif;
+    font-size: 16px;
+    line-height: 30px;
+    border: 2px solid #987654;
+    border-radius: 6px;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    height: 540px;
+    width: 500px;
+    resize: none;
+    margin:0px;
+}
+
+#journaltitle:focus {
+    outline: none;
+    border: 2px solid #987654;
+    border-bottom:"none";
+    box-shadow: 0 0 5px rgba(152, 118, 84, 0.5);
+}
+
+#journalpage:focus {
+    outline: none;
+    border: 2px solid #987654;
+    box-shadow: 0 0 5px rgba(152, 118, 84, 0.5);
+  }
+
+#colorchoice{
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    top: 40px;
+    left: 700px;
+    margin: 0px;
+}
+
+#cornsilk_1{
+    background:  #fff8dc;
+    border: 1px solid  #987654;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+#lightcyan_2{
+    background: #e0ffff ;
+    border: 1px solid #87ceeb ;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+
+#nyanza_3{
+    background: #e9ffdb;
+    border: 1px solid #addfad;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+#lavender_4{
+    background:  #e6e6fa;
+    border: 1px solid  #966fd6 ;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+#mistyrose_5{
+    background:  #ffe4e1;
+    border: 1px solid  #f7bfbe;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+#unbleachedsilk_6{
+    background:  #ffddca;
+    border: 1px solid #ff8c69;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 20px;
+}
+
+
+/* Image upload section */
+#image-container {
+    width: 250px;
+    display: block;
+    gap: 10px;
+    height: 536px;
+    overflow-y: scroll;
+    border: 2px solid #987654;
+    border-radius: 6px;
+}
+
+#image-display{
+    display:inline-block;
+    vertical-align: top;
+    position: absolute;
+    margin: 0px;
+    top: 0px;
+}
+
+/* Style for image thumbnails */
+.image-preview {
+    width: 210px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    margin: 10px;
+}
+
+/* Hide default file input button */
+#file-input {
+    display: none;
+}
+
+/* Styled upload button */
+#upload-btn {
+    padding: 10px 15px;
+    background: #fff8dc;
+    color: black;
+    border: 2px solid #987654;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+}
+
+#upload-btn:hover {
+    background: #987654;
+}
+
+#journalsave{
+    display: flex;
+    position: absolute;
+    left: 700px;
+    bottom: 12px;
+    width: 140px;
+    height: 40px;
+    background-color: #3cb371;
+    color: white;
+    border: 3px solid #009f6b;
+    border-radius: 3px;
+}
+
+#journalsave:hover {
+background-color: #009f6b;
+}
+
+#datepicker {
+    background-color: white;
+    border: 2px solid #3cb371;
+    border-radius: 6px;
+    width: 140px;
+    height: 40px;
+    display: block;
+    margin: 0px;
+}
+
+#date_message{
+    position: absolute;
+    bottom: 348px;
+    font-size: 14px;
+}
+
+#user-info {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#user-details {
+    display: flex;
+    align-items: center; /* Keep icon next to email */
+    gap: 10px; /* Space between icon and email */
+}
+
+#user-email {
+    font-weight: bold;
+    text-align: center;
+}
+
+#logout-btn {
+    background: #69121eb7; ;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+    text-align: center;
+    margin-top: 5px; /* Space between email and button */
+}
+
+#logout-btn:hover {
+    background: #af6c6c;
+}
+
